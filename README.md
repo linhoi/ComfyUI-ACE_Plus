@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h2 align="center"><img src="assets/figures/icon.png" height=16> ++: Instruction-Based Image Creation and Editing <br> via Context-Aware Content Filling </h2>
+  <h2 align="center"><img src="origin/assets/figures/icon.png" height=16> ++: Instruction-Based Image Creation and Editing <br> via Context-Aware Content Filling </h2>
 
   <p align="center">
     <a href="https://arxiv.org/abs/2501.02487"><img src='https://img.shields.io/badge/arXiv-ACE++-red' alt='Paper PDF'></a>
@@ -30,7 +30,7 @@
   <table align="center">
     <tr>
     <td>
-      <img src="assets/ace_method/method++.png">
+      <img src="origin/assets/ace_method/method++.png">
     </td>
     </tr>
   </table>
@@ -75,7 +75,7 @@ We found that there are conflicts between the repainting task and the editing ta
 
 To address this issue, we introduced 64 additional channels in the channel dimension to differentiate between these two tasks. In these channels, we place the latent representation of the pixel space from the edited image, while keeping other channels consistent with the repainting task. This approach significantly enhances the model's adaptability to different tasks.
 
-One issue with this approach is that it changes the input channel number of the FLUX-Fill-Dev model from 384 to 448. The specific configuration can be referenced in the [configuration file](config/ace_plus_fft.yaml).
+One issue with this approach is that it changes the input channel number of the FLUX-Fill-Dev model from 384 to 448. The specific configuration can be referenced in the [configuration file](origin/config/ace_plus_fft.yaml).
 
 
 We used tools from [stella](https://gist.github.com/Stella2211/10f5bd870387ec1ddb9932235321068e)(this is really a great work) to convert the fft-fp16 model to fft-fp8. The updated models are available on [ms](https://www.modelscope.cn/models/iic/ACE_Plus/file/view/master?fileName=ace_plus_fft_fp8.safetensors&status=2) and [hf](https://huggingface.co/ali-vilab/ACE_Plus/blob/main/ace_plus_fft_fp8.safetensors). The results of the fp8 model will differ from the fp16 model. We have not yet performed a rigorous comparison, so users should be aware of this.
@@ -86,7 +86,7 @@ Copy the workflow/ComfyUI-ACE_Plus folder into ComfyUI’s custom_nodes director
 
 We provide a parameter to adjust the GPU memory usage. As shown in the figure below, max_seq_length controls the length of the token sequence during inference, thereby controlling the model's inference memory consumption. The range of this value is from 1024 to 5120, and it correspondingly affects the clarity of the generated image. The smaller the value, the lower the image clarity.
 
-<img src="./assets/comfyui/snapshot.jpg" width="800">
+<img src="./origin/assets/comfyui/snapshot.jpg" width="800">
 
 <table><tbody>
   <tr>
@@ -124,98 +124,98 @@ We provide a parameter to adjust the GPU memory usage. As shown in the figure be
     <td>Function</td>
   </tr>
   <tr>
-    <td><img src="./assets/samples/portrait/human_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/portrait/human_1.jpg" width="200"></td>
     <td></td>
     <td></td>
-    <td><img src="./assets/samples/portrait/human_1_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/portrait/human_1_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Maintain the facial features, A girl is wearing a neat police uniform and sporting a badge. She is smiling with a friendly and confident demeanor. The background is blurred, featuring a cartoon logo."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Character ID Consistency Generation"</td>
   </tr>
   <tr>
-    <td><img src="./assets/samples/subject/subject_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/subject/subject_1.jpg" width="200"></td>
     <td></td>
     <td></td>    
-    <td><img src="./assets/samples/subject/subject_1_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/subject/subject_1_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Display the logo in a minimalist style printed in white on a matte black ceramic coffee mug, alongside a steaming cup of coffee on a cozy cafe table."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Subject Consistency Generation"</td>
   </tr>
   <tr>
-    <td><img src="./assets/samples/application/photo_editing/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_2_edit.jpg" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_2_m.webp" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_2_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_2_edit.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_2_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_2_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"The item is put on the table."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Subject Consistency Editing"</td>
   </tr>
   <tr>
-    <td><img src="./assets/samples/application/logo_paste/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/logo_paste/1_1_edit.png" width="200"></td>
-    <td><img src="./assets/samples/application/logo_paste/1_1_m.png" width="200"></td>
-    <td><img src="./assets/samples/application/logo_paste/1_1_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_1_edit.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_1_m.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_1_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"The logo is printed on the headphones."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Subject Consistency Editing"</td>
   </tr>
   <tr>
-    <td><img src="./assets/samples/application/try_on/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/try_on/1_1_edit.png" width="200"></td>
-    <td><img src="./assets/samples/application/try_on/1_1_m.png" width="200"></td>
-    <td><img src="./assets/samples/application/try_on/1_1_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_1_edit.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_1_m.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_1_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"The woman dresses this skirt."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Try On"</td>
   </tr>
   <tr>
-    <td><img src="./assets/samples/application/movie_poster/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/portrait/human_1.jpg" width="200"></td>
-    <td><img src="./assets/samples/application/movie_poster/1_2_m.webp" width="200"></td>
-    <td><img src="./assets/samples/application/movie_poster/1_1_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/portrait/human_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_2_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_1_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"{image}, the man faces the camera."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Face swap"</td>
   </tr>
  <tr>
     <td></td>
-    <td><img src="./assets/samples/application/sr/sr_tiger.png" width="200"></td>
-    <td><img src="./assets/samples/application/sr/sr_tiger_m.webp" width="200"></td>
-    <td><img src="./assets/samples/application/sr/sr_tiger_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/sr/sr_tiger.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/sr/sr_tiger_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/sr/sr_tiger_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"{image} features a close-up of a young, furry tiger cub on a rock. The tiger, which appears to be quite young, has distinctive orange, black, and white striped fur, typical of tigers. The cub's eyes have a bright and curious expression, and its ears are perked up, indicating alertness. The cub seems to be in the act of climbing or resting on the rock. The background is a blurred grassland with trees, but the focus is on the cub, which is vividly colored while the rest of the image is in grayscale, drawing attention to the tiger's details. The photo captures a moment in the wild, depicting the charming and tenacious nature of this young tiger, as well as its typical interaction with the environment."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Super-resolution"</td>
   </tr>
   <tr>
     <td></td>
-    <td><img src="./assets/samples/application/photo_editing/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_1_orm.webp" width="200"></td>
-    <td><img src="./assets/samples/application/regional_editing/1_1_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_1_orm.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/regional_editing/1_1_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"a blue hand"</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Regional Editing"</td>
   </tr>
   <tr>
     <td></td>
-    <td><img src="./assets/samples/application/photo_editing/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_1_rm.webp" width="200"></td>
-    <td><img src="./assets/samples/application/regional_editing/1_2_fft.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_1_rm.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/regional_editing/1_2_fft.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Mechanical  hands like a robot"</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Regional Editing"</td>
   </tr>
   <tr>
     <td></td>
-    <td><img src="./assets/samples/control/1_1_recolor.webp" width="200"></td>
-    <td><img src="./assets/samples/control/1_1_m.webp" width="200"></td>
-    <td><img src="./assets/samples/control/1_1_fft_recolor.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_recolor.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_fft_recolor.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"{image} Beautiful female portrait, Robot with smooth White transparent carbon shell, rococo detailing, Natural lighting, Highly detailed, Cinematic, 4K."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Recolorizing"</td>
   </tr>
   <tr>
     <td></td>
-    <td><img src="./assets/samples/control/1_1_depth.webp" width="200"></td>
-    <td><img src="./assets/samples/control/1_1_m.webp" width="200"></td>
-    <td><img src="./assets/samples/control/1_1_fft_depth.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_depth.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_fft_depth.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"{image} Beautiful female portrait, Robot with smooth White transparent carbon shell, rococo detailing, Natural lighting, Highly detailed, Cinematic, 4K."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Depth Guided Generation"</td>
   </tr>
   <tr>
     <td></td>
-    <td><img src="./assets/samples/control/1_1_contourc.webp" width="200"></td>
-    <td><img src="./assets/samples/control/1_1_m.webp" width="200"></td>
-    <td><img src="./assets/samples/control/1_1_fft_contour.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_contourc.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/control/1_1_fft_contour.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"{image} Beautiful female portrait, Robot with smooth White transparent carbon shell, rococo detailing, Natural lighting, Highly detailed, Cinematic, 4K."</td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Contour Guided Generation"</td>
   </tr>
@@ -240,42 +240,42 @@ In the table below, we have briefly listed some workflows for everyone to use.
   <tr>
     <td><a href="https://www.runninghub.cn/post/1890052281759571970"> 【飞翔鲸】王炸！FLUX+ACE++换头 </a> </td>
     <td><a href="https://www.runninghub.cn/user-center/1851827947798740994"> 飞翔鲸 </a></td>
-    <td><img src="./assets/comfyui/feixiangjing_face.png" height="200"></td>
+    <td><img src="./origin/assets/comfyui/feixiangjing_face.png" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://www.runninghub.cn/post/1890014204382916609"> 最新ACE++ Redux 万物迁移 AI模特换装 UP 楚门的AI世界 </a> </td>
     <td><a href="https://www.runninghub.cn/user-center/1865415077888405506"> 楚门的AI世界 </a></td>
-    <td><img src="./assets/comfyui/chumen_tryon.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/chumen_tryon.jpg" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://openart.ai/workflows/t8star/ace-plusfillredux/bgQDNz8SeySMDqn13ZBv"> Ace Plus+Fill+Redux稳定无抽卡换装工作流</a> </td>
     <td><a href="https://openart.ai/workflows/profile/t8star?sort=latest"> T8star-Aix </a></td>
-    <td><img src="./assets/comfyui/t8_star_tryon.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/t8_star_tryon.jpg" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://openart.ai/workflows/t8star/ace-plusfillredux/ifIvaWXW9QkLtNV405j7"> Ace Plus+Fill+Redux稳定少抽卡标志工作流</a> </td>
     <td><a href="https://openart.ai/workflows/profile/t8star?sort=latest"> T8star-Aix </a></td>
-    <td><img src="./assets/comfyui/t8_star_logo.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/t8_star_logo.jpg" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://openart.ai/workflows/t8star/ace-plusfillredux/WdwUwGXPLHhnSOlSEfTg"> Ace Plus+Fill+Redux稳定无抽卡换脸工作流</a> </td>
     <td><a href="https://openart.ai/workflows/profile/t8star?sort=latest"> T8star-Aix </a></td>
-    <td><img src="./assets/comfyui/t8_star_face.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/t8_star_face.jpg" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://openart.ai/workflows/cat_untimely_42/ace-face-swap-in-different-styles/VocvdfQrvDhmKNLEBwJY"> ace++ face swap in different styles </a> </td>
     <td><a href="https://openart.ai/workflows/profile/cat_untimely_42?sort=latest"> jax </a></td>
-    <td><img src="./assets/comfyui/jax_face_swap.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/jax_face_swap.jpg" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://openart.ai/workflows/leeguandong/fllux-ace-subject-without-reference-image/HjYf6Eae2PRGACJWXdrE"> fllux ace++ subject without reference image </a> </td>
     <td><a href="https://openart.ai/workflows/profile/leeguandong?sort=latest"> leeguandong </a></td>
-    <td><img src="./assets/comfyui/leeguandong_subject.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/leeguandong_subject.jpg" height="200"></td>
   </tr>
   <tr>
     <td><a href="https://openart.ai/workflows/whale_waterlogged_60/scepter-ace-more-convenient-replacement-of-everything/gjAsh5rGjfC6OEB2AUZv"> Scepter-ACE++ More convenient replacement of everything</a> </td>
     <td><a href="https://openart.ai/workflows/profile/whale_waterlogged_60?sort=latest"> HaoBeen </a></td>
-    <td><img src="./assets/comfyui/haobeen_ace_plus.jpg" height="200"></td>
+    <td><img src="./origin/assets/comfyui/haobeen_ace_plus.jpg" height="200"></td>
   </tr>
 </tbody>
 </table>
@@ -332,8 +332,8 @@ Portrait-consistent generation to maintain the consistency of the portrait.
   </tr>
   <tr>
     <td>LoRA <br>+ ACE Data</td>
-    <td><img src="./assets/samples/portrait/human_1.jpg" width="200"></td>
-    <td><img src="./assets/samples/portrait/human_1_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/portrait/human_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/portrait/human_1_1.jpg" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Maintain the facial features. A girl is wearing a neat police uniform and sporting a badge. She is smiling with a friendly and confident demeanor. The background is blurred, featuring a cartoon logo."</td>
     <td align="center" style="word-wrap:break-word;word-break:break-all;" width="200px";><a href="https://www.modelscope.cn/models/iic/ACE_Plus/"><img src="https://img.shields.io/badge/ModelScope-Model-blue" alt="ModelScope link"> </a> <a href="https://huggingface.co/ali-vilab/ACE_Plus/tree/main/portrait/"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow" alt="HuggingFace link"> </a> </td>
   </tr>
@@ -357,8 +357,8 @@ Subject-driven image generation task to maintain the consistency of a specific s
   </tr>
   <tr>
     <td>LoRA <br>+ ACE Data</td>
-    <td><img src="./assets/samples/subject/subject_1.jpg" width="200"></td>
-    <td><img src="./assets/samples/subject/subject_1_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/subject/subject_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/subject/subject_1_1.jpg" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"Display the logo in a minimalist style printed in white on a matte black ceramic coffee mug, alongside a steaming cup of coffee on a cozy cafe table."</td>
     <td align="center" style="word-wrap:break-word;word-break:break-all;" width="200px";><a href="https://www.modelscope.cn/models/iic/ACE_Plus/"><img src="https://img.shields.io/badge/ModelScope-Model-blue" alt="ModelScope link"> </a> <a href="https://huggingface.co/ali-vilab/ACE_Plus/tree/main/subject/"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow" alt="HuggingFace link"> </a> </td>
   </tr>
@@ -382,8 +382,8 @@ Redrawing the mask area of images while maintaining the original structural info
   </tr>
   <tr>
     <td>LoRA <br>+ ACE Data</td>
-    <td><img src="./assets/samples/local/local_1.webp" width="200"><br><img src="./assets/samples/local/local_1_m.webp" width="200"></td>
-    <td><img src="./assets/samples/local/local_1_1.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/local/local_1.webp" width="200"><br><img src="./origin/assets/samples/local/local_1_m.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/local/local_1_1.jpg" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="250px";>"By referencing the mask, restore a partial image from the doodle {image} that aligns with the textual explanation: "1 white old owl"."</td>
     <td align="center" style="word-wrap:break-word;word-break:break-all;" width="200px";><a href="https://www.modelscope.cn/models/iic/ACE_Plus/"><img src="https://img.shields.io/badge/ModelScope-Model-blue" alt="ModelScope link"> </a> <a href="https://huggingface.co/ali-vilab/ACE_Plus/tree/main/local_editing/"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow" alt="HuggingFace link"> </a> </td>
   </tr>
@@ -406,37 +406,37 @@ The ACE++ model supports a wide range of downstream tasks through simple adaptat
   <tr>
     <td>Try On</td>
     <td>ACE++ Subject</td>
-    <td><img src="./assets/samples/application/try_on/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/try_on/1_1_edit.png" width="200"></td>
-    <td><img src="./assets/samples/application/try_on/1_1_m.png" width="200"></td>
-    <td><img src="./assets/samples/application/try_on/1_1_res.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_1_edit.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_1_m.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/try_on/1_1_res.png" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="100px";>"The woman dresses this skirt."</td>
   </tr>
   <tr>
     <td>Logo Paste</td>
     <td>ACE++ Subject</td>
-    <td><img src="./assets/samples/application/logo_paste/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/logo_paste/1_1_edit.png" width="200"></td>
-    <td><img src="./assets/samples/application/logo_paste/1_1_m.png" width="200"></td>
-    <td><img src="./assets/samples/application/logo_paste/1_1_res.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_1_edit.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_1_m.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/logo_paste/1_1_res.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="100px";>"The logo is printed on the headphones."</td>
   </tr>
   <tr>
     <td>Photo Editing</td>
     <td>ACE++ Subject</td>
-    <td><img src="./assets/samples/application/photo_editing/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_1_edit.png" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_1_m.png" width="200"></td>
-    <td><img src="./assets/samples/application/photo_editing/1_1_res.jpg" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_1_edit.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_1_m.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/photo_editing/1_1_res.jpg" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="100px";>"The item is put on the ground."</td>
   </tr>
   <tr>
     <td>Movie Poster Editor</td>
     <td>ACE++ Portrait</td>
-    <td><img src="./assets/samples/application/movie_poster/1_ref.png" width="200"></td>
-    <td><img src="./assets/samples/application/movie_poster/1_1_edit.png" width="200"></td>
-    <td><img src="./assets/samples/application/movie_poster/1_1_m.png" width="200"></td>
-    <td><img src="./assets/samples/application/movie_poster/1_1_res.webp" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_ref.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_1_edit.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_1_m.png" width="200"></td>
+    <td><img src="./origin/assets/samples/application/movie_poster/1_1_res.webp" width="200"></td>
     <td style="word-wrap:break-word;word-break:break-all;" width="100px";>"The man is facing the camera and is smiling."</td>
   </tr>
 </tbody>
